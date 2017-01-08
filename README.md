@@ -9,7 +9,7 @@ The first commit is the result of a mess of working on it in my spare time. It c
 
 Joystick is a PSP controller replacement.
 
-# Possible Additions: # 
+# Possible Additions: 
 * Orangepi in the case. There is enough room.
 * Switch for US or Dvorak layout. 
 * LiPo batteries with I2C interface.
