@@ -9,15 +9,15 @@ The first commit is the result of a mess of working on it in my spare time. It c
 
 Joystick is a PSP controller replacement.
 
-Possible Additions:
-Orangepi in the case. There is enough room.
-Switch for US or Dvorak layout. 
-LiPo batteries with I2C interface.
-Small OLED display for dummy terminal.
-DIP switches in the back for settings.
-Buck and boost converters to charge batteries from any barrel jack power source.
-Fe1.1s USB hub chips to embed more hardware into it (flash, soundcard, HID, extra ports).
-Etc.
+# Possible Additions: # 
+* Orangepi in the case. There is enough room.
+* Switch for US or Dvorak layout. 
+* LiPo batteries with I2C interface.
+* Small OLED display for dummy terminal.
+* DIP switches in the back for settings.
+* Buck and boost converters to charge batteries from any barrel jack power source.
+* Fe1.1s USB hub chips to embed more hardware into it (flash, soundcard, HID, extra ports).
+* Etc.
 
 
 Ideally this keyboard will evolve into a sort of digital multitool, a self contained linux machine to aid in working on my other embedded projects. 
