@@ -6,7 +6,7 @@ int keyboardUS[14][9] = //rows 0-13, columns 14-22
   {0,              0,               KEY_END,           0,               KEY_PAGE_DOWN, KEY_HOME,          KEY_INSERT,      KEY_PAGE_UP,   MODIFIERKEY_RIGHT_GUI },  //3 
   {KEY_3,          KEY_E,           KEY_D,             KEY_C,           KEYPAD_2,      KEYPAD_5,          KEYPAD_8,        KEYPAD_SLASH,  0               },  //4
   {KEY_2,          KEY_W,           KEY_S,             KEY_X,           KEYPAD_3,      KEYPAD_6,          KEYPAD_9,        KEYPAD_ASTERIX,0               },  //5
-  {KEY_RIGHT_BRACE,KEY_LEFT_BRACE, 0,                 KEY_BACKSLASH,   KEY_0,         KEY_P,             KEY_SEMICOLON,   KEY_SLASH,     0               },  //6
+  {KEY_RIGHT_BRACE,KEY_LEFT_BRACE,  0,                 KEY_BACKSLASH,   KEY_0,         KEY_P,             KEY_SEMICOLON,   KEY_SLASH,     0               },  //6
   {0,              0,               MODIFIERKEY_RIGHT_SHIFT, KEY_QUOTE,       KEY_ENTER,     MODIFIERKEY_LEFT_SHIFT, 0,               KEYPAD_ENTER,  0               },  //7
   {0,              MODIFIERKEY_RIGHT_ALT, 0,                 KEY_LEFT,        KEY_RIGHT,     0,                 MODIFIERKEY_LEFT_ALT, KEY_DOWN,      0               },  //8
   {KEY_1,          KEY_Q,           KEY_A,             KEY_Z,           KEYPAD_PERIOD, KEYPAD_0,          KEYPAD_PLUS,     KEYPAD_MINUS,  0               },  //9
@@ -17,20 +17,20 @@ int keyboardUS[14][9] = //rows 0-13, columns 14-22
 };
 int keyboardDvorak[14][9] =
 {
-  {0,              0,               KEY_EQUAL,         KEY_BACKSPACE,   KEY_9,         KEY_R,             KEY_N,           KEY_V,         MODIFIERKEY_CTRL},
-  {0,              0,               KEY_PAUSE,         KEY_UP,          KEY_MINUS,     KEY_SCROLL_LOCK,   0,               KEY_DELETE,    MODIFIERKEY_GUI },
-  {KEY_4,          KEY_P,           KEY_U,             KEY_K,           KEYPAD_1,      KEYPAD_4,          KEYPAD_7,        KEY_NUM_LOCK,  MODIFIERKEY_CTRL},
-  {0,              0,               KEY_END,           0,               KEY_PAGE_DOWN, KEY_HOME,          KEY_INSERT,      KEY_PAGE_UP,   MODIFIERKEY_GUI },
-  {KEY_3,          KEY_PERIOD,      KEY_E,             KEY_J,           KEYPAD_2,      KEYPAD_5,          KEYPAD_8,        KEY_Z,         0               },
-  {KEY_2,          KEY_COMMA,       KEY_O,             KEY_Q,           KEYPAD_3,      KEYPAD_6,          KEYPAD_9,        KEYPAD_ASTERIX,0               },
-  {KEY_SLASH,      KEY_EQUAL,       0,                 KEY_BACKSLASH,   KEY_0,         KEY_L,             KEY_S,           KEY_SLASH,     0               },
-  {0,              0,               MODIFIERKEY_SHIFT, KEY_MINUS,       KEY_ENTER,     MODIFIERKEY_SHIFT, 0,               KEYPAD_ENTER,  0               },
+  {0,              0,               KEY_RIGHT_BRACE,         KEY_BACKSPACE,   KEY_9,         KEY_R,             KEY_N,           KEY_V,         MODIFIERKEY_CTRL}, //0
+  {0,              0,               KEY_PAUSE,         KEY_UP,          KEY_LEFT_BRACE,     KEY_SCROLL_LOCK,   0,               KEY_DELETE,    MODIFIERKEY_GUI },//1
+  {KEY_4,          KEY_P,           KEY_U,             KEY_K,           KEYPAD_1,      KEYPAD_4,          KEYPAD_7,        KEY_NUM_LOCK,  MODIFIERKEY_CTRL},      //2
+  {0,              0,               KEY_END,           0,               KEY_PAGE_DOWN, KEY_HOME,          KEY_INSERT,      KEY_PAGE_UP,   MODIFIERKEY_GUI },      //3
+  {KEY_3,          KEY_PERIOD,      KEY_E,             KEY_J,           KEYPAD_2,      KEYPAD_5,          KEYPAD_8,        KEYPAD_SLASH,         0               },      //4
+  {KEY_2,          KEY_COMMA,       KEY_O,             KEY_Q,           KEYPAD_3,      KEYPAD_6,          KEYPAD_9,        KEYPAD_ASTERIX,0               },      //5
+  {KEY_EQUAL,      KEY_SLASH,       0,                 KEY_BACKSLASH,   KEY_0,         KEY_L,             KEY_S,           KEY_Z,     0               },   //6
+  {0,              0,               MODIFIERKEY_SHIFT, KEY_MINUS,       KEY_ENTER,     MODIFIERKEY_SHIFT, 0,               KEYPAD_ENTER,  0               },      //7
   {0,              MODIFIERKEY_ALT, 0,                 KEY_LEFT,        KEY_RIGHT,     0,                 MODIFIERKEY_ALT, KEY_DOWN,      0               },
   {KEY_1,          KEY_QUOTE,       KEY_A,             KEY_SEMICOLON,   KEYPAD_PERIOD, KEYPAD_0,          KEYPAD_PLUS,     KEYPAD_MINUS,  0               },
-  {KEY_5,          KEY_F,           KEY_I,             KEY_X,           KEY_TAB,       KEY_SPACE,          KEY_CAPS_LOCK,   KEY_TILDE,     0               },
+  {KEY_5,          KEY_Y,           KEY_I,             KEY_X,           KEY_TAB,       KEY_SPACE,          KEY_CAPS_LOCK,   KEY_TILDE,     0               },
   {0,              0,               0,                 0,               KEY_8,         KEY_C,             KEY_T,           KEY_W,         0               },
   {KEY_F3,         0,               0,                 0,               KEY_7,         KEY_G,             KEY_H,           KEY_M,         0               },
-  {KEY_ESC,        KEY_F1,          KEY_F2,            KEY_PRINTSCREEN, KEY_6,         KEY_Y,             KEY_D,           KEY_B,         0               },
+  {KEY_ESC,        KEY_F1,          KEY_F2,            KEY_PRINTSCREEN, KEY_6,         KEY_F,             KEY_D,           KEY_B,         0               },
 };
 
 const char keyboard_dumb[14][9] =
@@ -109,9 +109,9 @@ void mouseButtons()
 }
 int curMouse[2];
 int prevMouse[2];
-byte mousePins[2] = {A13, A12};
+byte mousePins[2] = {A12, A13};
 void readMouse()
-{
+{ 
   curMouse[0] = analogRead(mousePins[0]);
   curMouse[1] = analogRead(mousePins[1]);
 }
@@ -122,33 +122,33 @@ void backupMouse()
 }
 
 byte mouseFlag =0;
-byte divisor = 16;
+byte divisor = 32;
 void normalizeMouse() //positive x = right, pos y  = down, +-127
 {
   mouseFlag=0;
   int tempy = 0;
   int tempx = 0;
-  if(curMouse[0] < 440)
+  if(curMouse[0] < 375)
+  {
+    tempy = curMouse[0] - 375;
+    tempy = tempy/divisor;
+    mouseFlag=1;
+  }
+  if(curMouse[0] > 440)
   {
     tempy = curMouse[0] - 440;
     tempy = tempy/divisor;
     mouseFlag=1;
   }
-  if(curMouse[0] > 535)
+  if(curMouse[1] < 450)
   {
-    tempy = curMouse[0] - 510;
-    tempy = tempy/divisor;
-    mouseFlag=1;
-  }
-  if(curMouse[1] < 430)
-  {
-    tempx = curMouse[1] - 445;
+    tempx = curMouse[1] - 450;
     tempx = tempx/divisor;
     mouseFlag=1;
   }
-  if(curMouse[1] > 550)
+  if(curMouse[1] > 495)
   {
-    tempx = curMouse[1] - 530;
+    tempx = curMouse[1] - 495;
     tempx = tempx/divisor;
     mouseFlag=1;
   }
@@ -202,6 +202,7 @@ void setup()
       previousState[i][t] = 0;
     }
   }
+  pinMode(32, INPUT_PULLUP); //selector for keyboard type
 }
 byte keyEvent = 0;
 void loop()
@@ -222,6 +223,7 @@ void loop()
 
 void doKeyboard()
 {
+  setKeyboardFormat();
   keyEvent = 0;
   backupArray();
   readTheKeys();
@@ -230,7 +232,35 @@ void doKeyboard()
   clear_output();
   poorThreading(5); //delaytime in micros
 }
+byte keyboardFormat = 1; // 1 is US, 0 is Dvorak
+int currentKeyboardLayout[14][9];
 
+void setKeyboardFormat() //pin 32 pullup
+{
+  pinMode(32, INPUT_PULLUP);
+  keyboardFormat = digitalRead(32);
+  //Serial.println(keyboardFormat);
+  if(keyboardFormat)
+  {
+    for(byte row = 0; row < 14; row++)
+    {
+      for(byte col = 0; col < 9; col++)
+      {
+        currentKeyboardLayout[row][col] = keyboardUS[row][col];  //bad bad not good
+      }
+    }
+  }
+  else
+  {
+    for(byte row = 0; row < 14; row++)
+    {
+      for(byte col = 0; col < 9; col++)
+      {
+        currentKeyboardLayout[row][col] = keyboardDvorak[row][col];
+      }
+    } 
+  }
+}
 void readTheKeys()  //THEY NEVER GET SET TO ZERO
 {
   for(byte row = 0; row < 14; row++)
@@ -252,7 +282,7 @@ void readTheKeys()  //THEY NEVER GET SET TO ZERO
         if(!digitalRead(mux[col]))
         {
           currentState[row][col-coffset] = 1;  //congrats you got one
-          if(currentState[row][col-coffset] != previousState[row][col-coffset]) Serial.println(keyboard_dumb[row][col-coffset]);  //just make sure its right ok?
+          if(currentState[row][col-coffset] != previousState[row][col-coffset]) Serial.println(keyboard_dumb[row][col-coffset]); //just make sure its right ok?
         }
         
       }
@@ -329,7 +359,7 @@ void compareCurArray()
           {
             if(sendKeyStatus[test] == 0) 
             {
-              sendKeyStatus[test] = keyboardUS[row][col]; //fill that array with the correct key being pressed
+              sendKeyStatus[test] = currentKeyboardLayout[row][col]; //fill that array with the correct key being pressed
               keyEvent = 1;
               test = 9; //unnessecary?
               break;
@@ -408,7 +438,7 @@ void comparePrevArray()
       {
           for(byte test = 1; test < 7; test++) //run through array real quick (just 1-6)
           {
-            if(sendKeyStatus[test] == keyboardUS[row][col]) //if the array has the key being unpressed in it
+            if(sendKeyStatus[test] == currentKeyboardLayout[row][col]) //if the array has the key being unpressed in it
             {
               sendKeyStatus[test] = 0; //you unpress that fucking key 
               keyEvent = 1;
@@ -452,6 +482,7 @@ void clear_output()
     }
   }
 }
+/*
 void handleModifiersOn(byte row, byte col)
 {
   if(col==8 && row==0)
@@ -544,4 +575,4 @@ void handleModifiersOn(byte row, byte col)
   }
 }
 
-
+*/
